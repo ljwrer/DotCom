@@ -17,9 +17,13 @@ public class DotComBust {
 			dotComList.add(two);
 			three.setName("AskMe.com");
 			dotComList.add(three);
+			System.out.println("Your goal is to sink three");
+			System.out.println("Pets.com,Go2.com,AskMe.com");
+			System.out.println("Try to sink them all in the fewest number of guesses");
 			for(DotCom dotComTest:dotComList)
 			{	
 				ArrayList<String>newLocation=helper.placeDotCom(3);
+				System.out.println(newLocation);
 				dotComTest.setLocationCells(newLocation);
 			}
 		}
@@ -49,10 +53,25 @@ public class DotComBust {
 					break;
 				}
 			}
-			
+			System.out.println(result);
 		}
 		void finishGame()
 		{
-			System.out.println(numOfGuesses);
+			System.out.println("All Dot Coms are dead! Your stock is now worthless.");
+			if(numOfGuesses<=18)
+			{
+				System.out.println("It only took you "+numOfGuesses+" guesses.");
+				System.out.println("You got out before your options sank.");
+			}
+			else
+			{
+				System.out.println("Took you long enough. "+numOfGuesses+" guesses.");
+				System.out.println("Fish are dancing with your options.");
+			}
+		}
+		public static void main(String[] args){
+			DotComBust game=new DotComBust();
+			game.setUpGame();
+			game.startPlaying();
 		}
 	}
